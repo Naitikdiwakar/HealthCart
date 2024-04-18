@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+   <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Sign Up form</title>
+  {% load static %}
+
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+  <link rel="stylesheet" href="{% static 'signup.css' %}">
+</head>
+<style>
+  .error {
+    color: rgb(255, 0, 0);
+
+  }
+</style>
+
+<body>
+  <div class="wrapper">
+    <img
+      src="https://mail.google.com/mail/u/0?ui=2&ik=d6e7f38541&attid=0.1&permmsgid=msg-f:1795116390679158574&th=18e988d8ace99f2e&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ_oD_7KLrCgnB6D7uymGSihSJAGNAMcXH-hJpIwU41lSS4SUgMwEQD-vmvoUjTw3rH0FduUcHb01GIr4u9RouZG4u9xuEsq2ZSTNzKW-jinNNX9jV1OgozvqhA&disp=emb&realattid=ii_lugmmlko0"
+      alt="images.jpeg" style="margin-left:5rem;">
+
+    <form  id="myform">
+      {% csrf_token %}
+      <div class="input-box">
+        <input type="text" placeholder="First name" name="first_name" id="first_name" autocomplete="on">
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Last name" name="last_name"  id="last_name" autocomplete="on">
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Enter your email" name="email"  id="email" autocomplete="on">
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password" name="password"   autocomplete="on">
+      </div>
+      <div class="input-box">
+         <input type="password" placeholder="Confirm password" name="confirm_password" id="confirm_password" autocomplete="on"> 
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Country" name="country" id="country" autocomplete="on">
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="State" name="state" id="state" autocomplete="on">
+      </div>
+      <div class="input-box">
+        <input type="tel" placeholder="Mobile Number" name="mobile_number"  id="mobile_number" autocomplete="on">
+      </div>
+      <div class="policy">
+        <input type="checkbox" name="accept_terms">
+        <h3>I accept all terms & condition</h3>
+      </div>
+      <div class="input-box button">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+
+    <script>
+
+      jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+      });
+
+      $("#myform").validate({
+        rules: {
+          first_name: {
+            required: true,
+
+          },
+          last_name: {
+            required: true,
+
+          },
+          mobile_number: {
+            required: true,
+
+          },
+          email: {
+            required: true,
+            email: true
+          },
+          password: {
+            required: true
+
+          },
+          confirm_password: {
+            required: true,
+            equalTo: "#confirm_password"
+          },
+          country: {
+            required: true
+          },
+          state: {
+            required: true
+          }
+        },
+        submitHandler: function (form) {
+          // Form submission code can go here if the form is valid
+          form.submit();
+        }
+      });
+       
+$("#myform").submit(function(e){
+        var valid_form = $("#myform").valid()
+        if  (valid_form){
+            var form =$(this);
+            $.ajax({
+                type:'POST',
+                url: "/",
+                data: form.serialize(),
+                success:function(data){
+                    window.location.href = "/login";
+                }
+            });
+        }
+    });
+    </script>
+</body>
+
+</html>

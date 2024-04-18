@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title style="color: white">Login Page</title>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+    <img
+      src="https://mail.google.com/mail/u/0?ui=2&ik=d6e7f38541&attid=0.1&permmsgid=msg-f:1795116390679158574&th=18e988d8ace99f2e&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ9BLs8HXl2rUrQbSy6sqUykd89hWikdi2cGc_f52c8dFIDqfSLlmT6lHaRsrszrjGmPigPIVnhiMiCDr2-5RIoCNpwb7uNKxG01sgGhSgVWy5VMUtPlAEJKXA0&disp=emb&realattid=ii_lugmmlko0"
+      alt=""
+    />
+  </head>
+
+  <body
+    style="font-family: Arial, sans-serif; background-color: #f1f1f1; text-align: center; background-color: rgb(255, 255, 255)14, 214);"
+  >
+    <div>
+      <form
+        style="
+          max-width: 300px;
+          margin: 20px auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <label
+          for="username"
+          style="display: block; text-align: left; color: #333"
+          >Username:</label
+        >
+        <input
+          type="text"
+          id="username"
+          name="username"
+          style="
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+          "
+        />
+
+        <label for="Email" style="display: block; text-align: left; color: #333"
+          >Email:</label
+        >
+        <input
+          type="email"
+          id="password"
+          name="password"
+          style="
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+          "
+        />
+
+        <label
+          for="password"
+          style="display: block; text-align: left; color: #333"
+          >Password:</label
+        >
+        <input
+          type="password"
+          id="password"
+          name="password"
+          style="
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+          "
+        />
+        <label
+          for="password"
+          style="display: block; text-align: left; color: #333"
+        >
+          Confirm Password:</label
+        >
+        <input
+          type="password"
+          id="password"
+          name=" Confirm password"
+          style="
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+          "
+        />
+
+        <button
+          type="submit"
+          style="
+            width: 100%;
+            padding: 8px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+          "
+        >
+          Login
+        </button>
+      </form>
+
+    </div>
+    <script>
+
+        jQuery.validator.setDefaults({
+          debug: true,
+          success: "valid"
+        });
+  
+        $("#myform").validate({
+          rules: {
+            first_name: {
+              required: true,
+  
+            },
+            last_name: {
+              required: true,
+  
+            },
+            
+            email: {
+              required: true,
+              email: true
+            },
+            password: {
+              required: true
+  
+            },
+            confirm_password: {
+              required: true,
+              equalTo: "#confirm_password"
+            },
+            
+          },
+          submitHandler: function (form) {
+            // Form submission code can go here if the form is valid
+            form.submit();
+          }
+        });
+  </body>
+</html>
